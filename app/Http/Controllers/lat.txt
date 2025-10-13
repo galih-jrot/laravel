@@ -1,0 +1,12 @@
+            buat CRUD dari biodata 
+            field: nama, tgl_lahir, jk , agama, alamat, foto, tinggi_badan, berat_badan
+
+            INPUTAN
+            nama         :textbox
+            tgl_lahir    :date
+            jk           :radio button
+            agama        :select
+            alamat       :text area
+            tinggi_badan :number
+            berat_badan  :number
+            foto         :file 

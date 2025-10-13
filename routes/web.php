@@ -127,7 +127,28 @@ Route::get('student',[Mycontroller::class,'siswa']);
 
 
 //post                      
-Route::get('post',[postController::class,'index']);
+Route::get('post',[postController::class,'index'])->name('post.index');
+//tambah data post
+Route::get('post/create',[postController::class, 'create'])->name('post.create');
+Route::post('post',[postController::class, 'store'])->name('post.store');
+//edit data post
+Route::get('post/{id}/edit', [postController::class, 'edit'])->name('post.edit');
+
+Route::put('post/{id}', [postController::class, 'update'])->name('post.update');
+
+
+//show data
+Route::get('post/{id}', [postController::class, 'show'])->name('post.show');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::delete('post/{id]', [postController::class, 'delete'])->name('post.delete');
+
+Route::resource('produk', App\Http\Controllers\ProdukController::class)->middleware('auth');
+
+
+use App\Http\Controllers\BiodataController;
+Route::resource('biodata', BiodataController::class);
