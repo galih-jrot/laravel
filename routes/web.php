@@ -152,3 +152,23 @@ Route::resource('produk', App\Http\Controllers\ProdukController::class)->middlew
 
 use App\Http\Controllers\BiodataController;
 Route::resource('biodata', BiodataController::class);
+
+
+// routes/web.php
+use App\Http\Controllers\RelasiController;
+Route::get('/one-to-one', [RelasiController::class, 'index']);
+
+// routes/web.php
+Route::get('/one-to-many', [RelasiController::class, 'oneToMany']);
+// routes/web.php
+
+Route::get('/many-to-many', [RelasiController::class, 'manyToMany']);
+
+Route::get('eloquent', [RelasiController::class, 'eloquent']);
+
+
+Route::resource('dosen', App\Http\Controllers\DosenController::class)->middleware('auth');
+
+
+Route::resource('hobi', App\Http\Controllers\HobiController::class)->middleware('auth');
+
