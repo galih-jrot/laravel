@@ -1,25 +1,65 @@
+
 @extends('layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>{{ __('Detail Produk') }}</span>
-                    <a href="{{ route('produk.index') }}" class="btn btn-sm btn-outline-primary">Kembali</a>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="float-start">
+                        {{ __('produk') }}
+                    </div>
+                    <div class="float-end">
+                        <a href="{{ route('produk.create') }}" class="btn btn-sm btn-outline-primary">Tambah Data</a>
+                    </div>
                 </div>
 
                 <div class="card-body">
-                    @if ($produk->image)
-                    <img src="{{ Storage::url($produk->image)  }}" class="w-100 rounded mb-3" alt="{{ $produk->nama }}">
-                    @else
-                    <img src="{{ asset('images/no-image.png') }}" class="w-100 rounded mb-3" alt="No Image">
-                    @endif
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Produk</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
 
-                    <h4 class="fw-bold">{{ $produk->nama }}</h4>
-                    <p class="mt-2 mb-1">Harga: <strong>Rp{{ number_format($produk->harga, 0, ',', '.') }}</strong></p>
-                    <p class="mt-2">{!! $produk->deskripsi !!}</p>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php $no = 1; @endphp
+                                @forelse ($produk as $data)
+                                <tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $data->nama_produk }}</td>
+                                    <td>{!! $data->harga !!}</td>
+                                    <td>{{ $data->stok}}</td>
+                                    <td>
+                                        <form action="{{ route('produk.destroy', $data->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a href="{{ route('produk.show', $data->id) }}"
+                                                class="btn btn-sm btn-outline-dark">Show</a> |
+                                            <a href="{{ route('produk.edit', $data->id) }}"
+                                                class="btn btn-sm btn-outline-success">Edit</a> |
+                                            <button type="submit" onsubmit="return confirm('Are You Sure ?');"
+                                                class="btn btn-sm btn-outline-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        Data data belum Tersedia.
+                                    </td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                        {!! $produk->withQueryString()->links('pagination::bootstrap-4') !!}
+                    </div>
                 </div>
             </div>
         </div>

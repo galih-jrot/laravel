@@ -1,8 +1,15 @@
+SQLSTATE[HY000]:General error: 1364Field'email'doesn't have a default value (Connection: mysql, SQL: insert into `pelanggans` (`nama`, `alamat`, `no_telepon`, `updated_at`, `created_at`) values (galih nurrohman, cibogo, 0987664787, 2025-11-10 04:50:35, 2025-11-10 04:50:35))
 <?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mycontroller; //contoller harus di import / di panggil
 use App\Http\Controllers\postController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\PembayaranController;
+
+
 
 
 Route::get('/', function () {
@@ -171,4 +178,17 @@ Route::resource('dosen', App\Http\Controllers\DosenController::class)->middlewar
 
 
 Route::resource('hobi', App\Http\Controllers\HobiController::class)->middleware('auth');
+
+Route::resource('mahasiswa', App\Http\Controllers\MahasiswaController::class);
+
+Route::prefix('latihan')->group(function () {
+    Route::get('/transaksi/search', [TransaksiController::class, 'search'])->name('transaksi.search');
+    Route::resource('pelanggan', App\Http\Controllers\PelangganController::class);
+    Route::resource('produk', App\Http\Controllers\ProdukController::class);
+    Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
+    Route::resource('pembayaran', App\Http\Controllers\PembayaranController::class);
+
+})->middleware('auth');
+
+
 

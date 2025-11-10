@@ -1,0 +1,11 @@
+- [x] Perbaiki migration add_email_to_pelanggans_table.php untuk menambahkan kolom email
+- [x] Perbaiki fillable di model transaksi.php
+- [x] Ubah path view di TransaksiController.php dari latihan.transaksi.* ke transaksi.*
+- [x] Ubah path view di PembayaranController.php dari latihan.pembayaran.* ke pembayaran.*
+- [x] Perbaiki query pencarian di PembayaranController.php dari 'kode' ke 'kode_transaksi'
+- [x] Hapus route duplikat pelanggan di luar prefix latihan di routes/web.php
+- [x] Tambahkan import TransaksiController dan PembayaranController di routes/web.php
+- [x] Jalankan php artisan migrate
+- [x] Test route list untuk memastikan routes terdaftar dengan benar
+- [ ] Test CRUD pelanggan, transaksi, dan pembayaran
+- [ ] Jika ada error lain, perbaiki sesuai
