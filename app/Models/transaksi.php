@@ -19,4 +19,9 @@ class Transaksi extends Model
             ->withTimestamps();
     }
 
+    public function pembayaran()
+    {
+        return $this->hasOne(Pembayaran::class, 'id_transaksi');
+    }
+
 }

@@ -160,6 +160,9 @@ class TransaksiController extends Controller
         // Hapus relasi pivot
         $transaksi->produks()->detach();
 
+        // Hapus pembayaran terkait jika ada
+        $transaksi->pembayaran()->delete();
+
         // Hapus transaksi utama
         $transaksi->delete();
 

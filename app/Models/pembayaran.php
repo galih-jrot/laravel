@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pembayaran extends Model
 {
     protected $fillable = [
-        'transaksi_id',
+        'id_transaksi',
         'tanggal_bayar',
         'metode_pembayaran',
         'jumlah_bayar',
@@ -15,7 +15,6 @@ class Pembayaran extends Model
 
     public function transaksi()
     {
-        return $this->belongsTo(Transaksi::class, 'transaksi_id');
+        return $this->belongsTo(Transaksi::class, 'id_transaksi');
     }
 }
-

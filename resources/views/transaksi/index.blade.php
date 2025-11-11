@@ -44,7 +44,7 @@
                 <tr>
                     <td>{{ $no + 1 }}</td>
                     <td>{{ $trx->kode_transaksi }}</td>
-                    <td>{{ \Carbon\Carbon::parse($trx->tanggal)->format('d M Y, H:i') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($trx->tanggal)->format('d M Y') }}</td>
                     <td>{{ $trx->pelanggan->nama ?? '-' }}</td>
                     <td>Rp{{ number_format($trx->total_harga, 0, ',', '.') }}</td>
                     <td>

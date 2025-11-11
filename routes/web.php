@@ -1,4 +1,3 @@
-SQLSTATE[HY000]:General error: 1364Field'email'doesn't have a default value (Connection: mysql, SQL: insert into `pelanggans` (`nama`, `alamat`, `no_telepon`, `updated_at`, `created_at`) values (galih nurrohman, cibogo, 0987664787, 2025-11-10 04:50:35, 2025-11-10 04:50:35))
 <?php
 
 use Illuminate\Support\Facades\Route;
